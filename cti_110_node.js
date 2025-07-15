@@ -15,10 +15,12 @@ const connectionString = `postgres://postgres:CTI_110_WakeTech@localhost/Gradebo
 const pool = new Pool({connectionString:connectionString})
 
 // This line says when it's looking for a file linked locally,
+// check in sub-folder "public"
 app.use(express.static(path.join(__dirname, 'public')));
 
 // This creates a new anonymous function that runs whenever 
 // someone calls "get" on the server root "/"
+router.get('/', function(req, res){
     // It just returns a file to their browser 
     // from the same directory it's in, called gradebook.html
     res.sendFile(path.join(__dirname, 'sushantpotu_gradebook.html'));
